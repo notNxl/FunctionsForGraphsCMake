@@ -310,72 +310,72 @@ bool containsLoopAM(vector <vector <int> > am)
 }
 
 //Поиск в глубину по матрице смежности
-//bool DFS_am(vector <vector <int> > am, int v, int u, bool* visited = NULL)
-//{
-//    if (u >= am.size())
-//    {
-//        return false;
-//    }
-//
-//    if (visited == NULL)
-//    {
-//        delete[] visited;
-//        visited = new bool[am.size()];
-//        for (int i = 0; i < am.size(); i++)
-//        {
-//            visited[i] = false;
-//        }
-//    }
-//
-//    visited[v] = true;
-//    for (int i = 0; i < am[v].size(); i++)
-//    {
-//        if ((!visited[i]) && (am[v][i] >= 1))
-//        {
-//            DFS_am(am, i, u, visited);
-//        }
-//    }
-//
-//    if (visited[u])
-//    {
-//        return true;
-//    }
-//    return false;
-//}
-//
+bool DFS_am(vector <vector <int> > am, int v, int u, bool* visited)
+{
+    if (u >= am.size())
+    {
+        return false;
+    }
+
+    if (visited == NULL)
+    {
+        delete[] visited;
+        visited = new bool[am.size()];
+        for (int i = 0; i < am.size(); i++)
+        {
+            visited[i] = false;
+        }
+    }
+
+    visited[v] = true;
+    for (int i = 0; i < am[v].size(); i++)
+    {
+        if ((!visited[i]) && (am[v][i] >= 1))
+        {
+            DFS_am(am, i, u, visited);
+        }
+    }
+
+    if (visited[u])
+    {
+        return true;
+    }
+    return false;
+}
+
 ////Поиск в глубину по списку смежности
-//bool DFS_al(vector <vector <int> > al, int v, int u, bool* visited = NULL)
-//{
-//    if (u >= al.size())
-//    {
-//        return false;
-//    }
-//
-//    if (visited == NULL)
-//    {
-//        delete[] visited;
-//        visited = new bool[al.size()];
-//        for (int i = 0; i < al.size(); i++)
-//        {
-//            visited[i] = false;
-//        }
-//    }
-//
-//    visited[v] = true;
-//    for (int i = 0; i < al[v].size(); i++)
-//    {
-//        if (!visited[al[v][i]])
-//        {
-//            DFS_am(al, al[v][i], u, visited);
-//        }
-//    }
-//
-//    if (visited[u])
-//    {
-//        return true;
-//    }
-//    return false;
-//}
+bool DFS_al(vector <vector <int> > al, int v, int u, bool* visited)
+{
+    if (u >= al.size())
+    {
+        return false;
+    }
+
+    if (visited == NULL)
+    {
+        delete[] visited;
+        visited = new bool[al.size()];
+        for (int i = 0; i < al.size(); i++)
+        {
+            visited[i] = false;
+        }
+    }
+
+    visited[v] = true;
+    for (int i = 0; i < al[v].size(); i++)
+    {
+        if (!visited[al[v][i]])
+        {
+            DFS_am(al, al[v][i], u, visited);
+        }
+    }
+
+    if (visited[u])
+    {
+        return true;
+    }
+    return false;
+}
 
 //Поиск в ширину по матрице смежности
 bool BFS_am(vector <vector <int> > am, int v, int u)
